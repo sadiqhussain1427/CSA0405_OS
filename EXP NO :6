@@ -1,0 +1,19 @@
+#include <stdio.h>
+int main(){
+    int n,i,bt[10],pr[10],rt[10],done=0,t=0,minp;
+    printf("Enter no of processes: "); scanf("%d",&n);
+    for(i=0;i<n;i++){ printf("BT & Priority P%d: ",i+1); scanf("%d%d",&bt[i],&pr[i]); rt[i]=bt[i]; }
+    while(done<n){
+        minp=-1;
+        for(i=0;i<n;i++) if(rt[i]>0 && (minp==-1 || pr[i]>pr[minp])) minp=i;
+        rt[minp]--; t++;
+        if(rt[minp]==0){ done++; printf("P%d finished at %d\n",minp+1,t); }
+    }P2 finished at 15
+P1 finished at 16
+}
+
+OUTPUT:
+P2 finished at 15
+P1 finished at 16
+P3 finished at 12
+p4 finished at 7
