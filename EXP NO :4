@@ -1,0 +1,11 @@
+#include <fcntl.h>
+#include <unistd.h>
+char buf[100];
+int main() {
+    int in=open("a.txt",O_RDONLY);
+    int out=open("b.txt",O_WRONLY|O_CREAT,0644);
+    int n;
+    while((n=read(in,buf,100))>0) write(out,buf,n);
+}
+OUTPUT:
+b.txt → "Hello"
